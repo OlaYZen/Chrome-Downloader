@@ -47,7 +47,7 @@ This command will clone the repository into your current directory.
 - Open PowerShell and navigate to the directory containing the script and config.json.
 - Execute the script:
 ```css
- & '.\Chrome Downloader.ps1' 
+& '.\Chrome Downloader.ps1' 
 ```
 
 ### 4. Monitor the Logs:
