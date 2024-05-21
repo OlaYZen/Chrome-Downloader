@@ -24,12 +24,25 @@ The script reads its configuration from a JSON file named `config.json` located 
 ## Script Usage
 ### 1. Prepare the Environment:
 
-Ensure that config.json is present in the same directory as the script.
+Ensure that `config.json` is present in the same directory as the script.
 Create the following template folders and populate them with necessary files:
 - `Template\Chrome-Template`
 - `Template\Chrome-Template-Forced`
 
-### 2. Run the Script:
+### 2. Downloading the Script:
+
+You can download the script using `git clone` command. Follow these steps:
+
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you want to download the script.
+3. Run the following command:
+```
+git clone https://github.com/OlaYZen/Chrome-Downloader.git
+```
+
+This command will clone the repository into your current directory.
+
+### 3. Run the Script:
 
 - Open PowerShell and navigate to the directory containing the script and config.json.
 - Execute the script:
@@ -37,6 +50,6 @@ Create the following template folders and populate them with necessary files:
 .\YourScriptName.ps1
 ```
 
-### 3. Monitor the Logs:
+### 4. Monitor the Logs:
 
 - Check `Log.txt` in the script directory for detailed logs of the execution process, including any errors encountered.
