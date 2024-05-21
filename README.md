@@ -33,7 +33,7 @@ Create the following template folders and populate them with necessary files:
 
 - Open PowerShell and navigate to the directory containing the script and config.json.
 - Execute the script:
-```javascript
+```css
 .\YourScriptName.ps1
 ```
 
