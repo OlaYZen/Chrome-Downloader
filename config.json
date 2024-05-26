@@ -1,7 +1,8 @@
 {
   "options": {
     "enableRegularVersion": true,
-    "enableForcedVersion": false
+    "enableForcedVersion": false,
+    "enableNumberedVersion": false
   },
   "logDateFormat": "dd/MM/yyyy HH:mm:ss"
 }

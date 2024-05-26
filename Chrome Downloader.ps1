@@ -127,3 +127,7 @@ if ($config.options.enableForcedVersion) {
         }
     }
 }
+
+if ($config.options.enableNumberedVersion) {
+    & $PSScriptRoot\Rename.ps1
+}
