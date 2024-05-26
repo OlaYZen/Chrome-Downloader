@@ -24,7 +24,6 @@ if ($config.options.enableRegularVersion -and -not $config.options.enableForcedV
     # Rename the folder if the version was retrieved
     if ($chromeVersion) {
         $newFolderName = "Chrome - $chromeVersion"
-        $newFolderPath = Join-Path -Path $PSScriptRoot -ChildPath $newFolderName
         try {
             Rename-Item -Path $destinationFolder -NewName $newFolderName -ErrorAction Stop
             Log-Message "Success: Folder renamed to $newFolderName"
@@ -46,7 +45,6 @@ elseif ($config.options.enableForcedVersion -and -not $config.options.enableRegu
     # Rename the folder if the version was retrieved
     if ($chromeVersion) {
         $newFolderName = "Chrome - $chromeVersion" + "_force_update"
-        $newFolderPath = Join-Path -Path $PSScriptRoot -ChildPath $newFolderName
         try {
             Rename-Item -Path $forceUpdateFolder -NewName $newFolderName -ErrorAction Stop
             Log-Message "Success: Folder renamed to $newFolderName"
