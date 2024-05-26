@@ -10,7 +10,7 @@ The script reads its configuration from a JSON file named `config.json` located 
 
 - `enableRegularVersion`: Boolean flag to enable the downloading of the regular version of Chrome.
 - `enableForcedVersion`: Boolean flag to enable the downloading of the forced update version of Chrome.
-- `enableNumberedVersion`: Boolean flag to enable the automatic renaming of the folder to the newest version of Chrome.
+- `enableNumberedVersion`: Boolean flag to enable the automatic renaming of the folder to the newest version of Chrome **⚠️This config requires administrative privileges when executing the script!⚠️**
 - `logDateFormat`: A string defining the format of timestamps in log messages.
 
 #### Date Configuration

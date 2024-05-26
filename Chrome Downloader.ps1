@@ -128,6 +128,12 @@ if ($config.options.enableForcedVersion) {
     }
 }
 
-if ($config.options.enableNumberedVersion) {
-    & $PSScriptRoot\Rename.ps1
+# Check if the script is running with administrative privileges
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Log-Message "Error: the config 'enableNumberedVersion' requires administrative privileges to run."
+}
+else {
+    if ($config.options.enableNumberedVersion) {
+        & $PSScriptRoot\Rename.ps1
+    }
 }
