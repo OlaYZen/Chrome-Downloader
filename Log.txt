@@ -1,5 +1,0 @@
-[26/05/2024 17:03:05] - Script initiation: Chrome Downloader
-[26/05/2024 17:03:05] - Directory creation: 'Chrome - VERSION_force_update' successfully created in C:\Users\Olai\OneDrive\Documents\GitHub\Chrome-Downloader
-[26/05/2024 17:03:05] - Success: Forced Template successfully copied to C:\Users\Olai\OneDrive\Documents\GitHub\Chrome-Downloader\Chrome - VERSION_force_update
-[26/05/2024 17:03:08] - Download complete: 64-bit version of Chrome successfully downloaded to force update folder at C:\Users\Olai\OneDrive\Documents\GitHub\Chrome-Downloader\Chrome - VERSION_force_update\googlechromestandaloneenterprise64.msi
-[26/05/2024 17:03:09] - Success: Folder renamed to Chrome - 125.0.6422.113_force_update
