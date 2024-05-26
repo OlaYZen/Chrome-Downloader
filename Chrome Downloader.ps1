@@ -14,7 +14,7 @@ function Log-Message {
         [string]$message
     )
     $timestamp = Get-Date -Format $dateFormat
-    Write-Output "[$timestamp] - $message" | Out-File -Append -FilePath "$PSScriptRoot\Log.txt" -Encoding utf8
+    Write-Output "[$timestamp] - $message" | Out-File -Append -FilePath "$PSScriptRoot\chrome_downloader.log" -Encoding utf8
 }
 
 # Log the start of the script

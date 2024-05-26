@@ -1,3 +1,5 @@
 
 /Template
-Log.txt
+chrome_downloader.log
+/Chrome - *_force_update
+/Chrome - *
