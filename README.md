@@ -100,4 +100,4 @@ This command will clone the repository into your current directory.
 
 ### 4. Monitor the Logs:
 
-- Check `Log.txt` in the script directory for detailed logs of the execution process, including any errors encountered.
+- Check `chrome_downloader.log` in the script directory for detailed logs of the execution process, including any errors encountered.
