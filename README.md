@@ -75,7 +75,7 @@ Output: <code>29-06-2024 15:19:30</code>
 For example, if this option is enabled, the folders will be named as follows:
 
 `false`:
-```
+```css
 Chrome - VERSION_force_update
 ```
 
