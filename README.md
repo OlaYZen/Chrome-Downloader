@@ -4,16 +4,29 @@ This PowerShell script automates the process of downloading and organizing Googl
 
 ## Script Overview
 
-### Configuration
+## Configuration
 
-The script reads its configuration from a JSON file named `config.json` located in the same directory as the script. The configuration options include:
+The script reads its configuration from a JSON file named config.json located in the same directory as the script. The configuration options include:
 
-- `enableRegularVersion`: Boolean flag to enable the downloading of the regular version of Chrome.
-- `enableForcedVersion`: Boolean flag to enable the downloading of the forced update version of Chrome.
-- `enableNumberedVersion`: Boolean flag to enable the automatic renaming of the folder to the newest version of Chrome **⚠️This config requires administrative privileges when executing the script!⚠️**
-- `logDateFormat`: A string defining the format of timestamps in logs.
+### Configuration File
+The `config.json` file should be structured as follows:
+```json
+{
+  "options": {
+    "enableRegularVersion": true,
+    "enableForcedVersion": false,
+    "enableNumberedVersion": false
+  },
+  "logDateFormat": "dd/MM/yyyy HH:mm:ss"
+}
+```
 
-#### Date Configuration
+- `enableRegularVersion`: A boolean flag to enable downloading and installing the regular version of Chrome.
+- `enableForcedVersion`: A boolean flag to enable downloading and installing the forced update version of Chrome.
+- `enableNumberedVersion`: A boolean flag to enable the automatic renaming of the folder to the newest version of Chrome. ⚠️ **This option requires administrative privileges when executing the script!** ⚠️
+- `logDateFormat`: A string defining the format of timestamps in logs. The default format is `dd/MM/yyyy HH:mm:ss`.
+
+### Date Configuration
 
 ##### `yyyy`: This specifier represents the year portion of the date. It uses four digits to represent the year. For example, 2024.
 
@@ -56,19 +69,23 @@ Output: <code>06.29.2024 15:19:30</code>
 ```
 Output: <code>29-06-2024 15:19:30</code>
 
+### Numbered Version
+`enableNumberedVersion`: Set this to `true` to enable automatic renaming of the folder based on the downloaded Chrome version. This action requires administrative privileges.
 
-## Configuration File (`config.json`)
+For example, if this option is enabled, the folders will be named as follows:
 
-```json
-{
-  "options": {
-    "enableRegularVersion": true,
-    "enableForcedVersion": false,
-    "enableNumberedVersion": false
-  },
-  "logDateFormat": "yyyy'/'MM'/'dd hh:mm:ss tt"
-}
+`false`:
 ```
+Chrome - VERSION_force_update
+```
+
+`true`:
+```json
+Chrome - 125.0.6422.113_force_update
+```
+
+The `enableNumberedVersion` configuration requires administrative privileges because the only way to obtain the Chrome version number is by installing the MSI file and retrieving the version from the Windows registry.
+
 ## Script Usage
 ### 1. Prepare the Environment:
 
