@@ -80,7 +80,7 @@ Chrome - VERSION_force_update
 ```
 
 `true`:
-```json
+```css
 Chrome - 125.0.6422.113_force_update
 ```
 
