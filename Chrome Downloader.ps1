@@ -134,8 +134,6 @@ if ($config.options.enableNumberedVersion) {
 		Log-Message "Error: the config 'enableNumberedVersion' requires administrative privileges to run."
 	}
 	else {
-		if ($config.options.enableNumberedVersion) {
-			& $PSScriptRoot\Rename.ps1
-		}
+		& $PSScriptRoot\Rename.ps1
 	}
 }
