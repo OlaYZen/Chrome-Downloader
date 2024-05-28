@@ -3,18 +3,23 @@ $configPath = "$PSScriptRoot\config.json"
 $config = Get-Content -Path $configPath | ConvertFrom-Json
 
 # Get the date format from the configuration, or use the default format if not provided
-$dateFormat = $config.logDateFormat
+$dateFormat = $config.logging.logDateFormat
 if (-not $dateFormat) {
     $dateFormat = "dd/MM/yyyy HH:mm:ss"
 }
 
+
 # Function to log messages with the specified date format
+$logFileName = $config.logging.fileName
+if (-not $logFileName) {
+    $logFileName = "chrome_downloader.log"
+}
 function Log-Message {
     param (
         [string]$message
     )
     $timestamp = Get-Date -Format $dateFormat
-    Write-Output "[$timestamp] - $message" | Out-File -Append -FilePath "$PSScriptRoot\chrome_downloader.log" -Encoding utf8
+    Write-Output "[$timestamp] - $message" | Out-File -Append -FilePath "$PSScriptRoot\$logFileName" -Encoding utf8
 }
 
 # Log the start of the script
@@ -149,10 +154,10 @@ if ($config.options.enableForcedVersion) {
     }
 }
 
-if ($config.options.enableNumberedVersion) {
+if ($config.options.folderNumberedVersion) {
 	# Check if the script is running with administrative privileges
 	if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-		Log-Message "Error: the config 'enableNumberedVersion' requires administrative privileges to run."
+		Log-Message "Error: the config 'folderNumberedVersion' requires administrative privileges to run."
 	}
 	else {
 		& $PSScriptRoot\Rename.ps1

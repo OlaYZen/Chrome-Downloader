@@ -15,18 +15,24 @@ The `config.json` file should be structured as follows:
   "options": {
     "enableRegularVersion": true,
     "enableForcedVersion": false,
-    "enableNumberedVersion": false,
-    "checkExist": false,
+    "folderNumberedVersion": false,
+    "checkExist": false
   },
-  "logDateFormat": "dd/MM/yyyy HH:mm:ss"
+  "logging": {
+    "fileName": "chrome_downloader.log",
+    "logDateFormat": "dd/MM/yyyy HH:mm:ss"
+
+  }
 }
 ```
 
 - `enableRegularVersion`: A boolean flag to enable downloading and installing the regular version of Chrome.
 - `enableForcedVersion`: A boolean flag to enable downloading and installing the forced update version of Chrome.
-- `enableNumberedVersion`: A boolean flag to enable the automatic renaming of the folder to the newest version of Chrome. ⚠️ **This option requires administrative privileges when executing the script!** ⚠️
+- `folderNumberedVersion`: A boolean flag to enable the automatic renaming of the folder to the newest version of Chrome. ⚠️ **This option requires administrative privileges when executing the script!** ⚠️
 - `checkExist`: A boolean flag to delete old Chrome folders when the script is executed. ⚠️ **This action will delete your Chrome folders, so ensure you have backups if you wish to retain them.** ⚠️
+- `fileName`: A string defining the name of the log file. The default format is `chrome_downloader.log`.
 - `logDateFormat`: A string defining the format of timestamps in logs. The default format is `dd/MM/yyyy HH:mm:ss`.
+
 
 ### Date Configuration
 
@@ -72,7 +78,7 @@ Output: <code>06.29.2024 15:19:30</code>
 Output: <code>29-06-2024 15:19:30</code>
 
 ### Numbered Version
-`enableNumberedVersion`: Set this to `true` to enable automatic renaming of the folder based on the downloaded Chrome version. This action requires administrative privileges.
+`folderNumberedVersion`: Set this to `true` to enable automatic renaming of the folder based on the downloaded Chrome version. This action requires administrative privileges.
 
 For example, if this option is enabled, the folders will be named as follows:
 
@@ -86,7 +92,7 @@ Chrome - VERSION_force_update
 Chrome - 125.0.6422.113_force_update
 ```
 
-The `enableNumberedVersion` configuration requires administrative privileges because the only way to obtain the Chrome version number is by installing the MSI file and retrieving the version from the Windows registry.
+The `folderNumberedVersion` configuration requires administrative privileges because the only way to obtain the Chrome version number is by installing the MSI file and retrieving the version from the Windows registry.
 
 ## Script Usage
 ### 1. Prepare the Environment:

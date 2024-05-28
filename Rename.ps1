@@ -2,15 +2,26 @@
 $configPath = "$PSScriptRoot\config.json"
 $config = Get-Content -Path $configPath | ConvertFrom-Json
 
+# Get the date format from the configuration, or use the default format if not provided
+$dateFormat = $config.logging.logDateFormat
+if (-not $dateFormat) {
+    $dateFormat = "dd/MM/yyyy HH:mm:ss"
+}
+
 $destinationFolder = Join-Path -Path $PSScriptRoot -ChildPath "Chrome - VERSION"
 $forceUpdateFolder = Join-Path -Path $PSScriptRoot -ChildPath "Chrome - VERSION_force_update"
 
+# Function to log messages with the specified date format
+$logFileName = $config.logging.fileName
+if (-not $logFileName) {
+    $logFileName = "chrome_downloader.log"
+}
 function Log-Message {
     param (
         [string]$message
     )
     $timestamp = Get-Date -Format $dateFormat
-    Write-Output "[$timestamp] - $message" | Out-File -Append -FilePath "$PSScriptRoot\chrome_downloader.log" -Encoding utf8
+    Write-Output "[$timestamp] - $message" | Out-File -Append -FilePath "$PSScriptRoot\$logFileName" -Encoding utf8
 }
 
 if ($config.options.enableRegularVersion -and -not $config.options.enableForcedVersion) {

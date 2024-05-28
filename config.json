@@ -2,8 +2,11 @@
   "options": {
     "enableRegularVersion": true,
     "enableForcedVersion": false,
-    "enableNumberedVersion": false,
+    "folderNumberedVersion": false,
     "checkExist": false
   },
-  "logDateFormat": "dd/MM/yyyy HH:mm:ss"
+  "logging": {
+    "fileName": "chrome_downloader.log",
+    "logDateFormat": "dd/MM/yyyy HH:mm:ss"
+  }
 }
