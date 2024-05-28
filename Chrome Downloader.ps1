@@ -18,13 +18,34 @@ function Log-Message {
 }
 
 # Log the start of the script
-Log-Message "Script initiation: Chrome Downloader"
+Log-Message "Debug: Script started"
 
 # Check if both options are disabled and log a message
 if (-not $config.options.enableRegularVersion -and -not $config.options.enableForcedVersion) {
-    Log-Message "Configuration error: Both Regular and Forced versions are disabled. Please enable at least one option to proceed."
+    Log-Message "Warn: Both Regular and Forced versions are disabled. Please enable at least one option to proceed."
     exit
 }
+
+if ($config.options.checkExist) {
+    $testPath = "$PSScriptRoot\Chrome - *"
+
+    # Store subfolders before deletion
+    $subfolders = @()
+    
+    if (Test-Path $testPath) {
+        $subfolders = Get-ChildItem -Path $testPath -Directory | ForEach-Object { $_.FullName }
+        
+        # Remove the folders
+        Remove-Item $testPath -Recurse -Force
+    }
+    
+    # Output the subfolders
+    foreach ($subfolder in $subfolders) {
+        Log-Message "Info: The subfolder '$subfolder\' has been deleted."
+    }
+    
+}
+
 
 # Define URLs
 $url1 = "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi"
@@ -47,7 +68,7 @@ if ($config.options.enableRegularVersion) {
     if (-not (Test-Path $filesFolder)) {
         try {
             New-Item -Path $filesFolder -ItemType Directory -ErrorAction Stop
-            Log-Message "Directory creation: 'Chrome - VERSION' and 'Files' folder successfully created in $PSScriptRoot"
+            Log-Message "Info: Directory creation, 'Chrome - VERSION' and 'Files' folder successfully created in $PSScriptRoot"
         } catch {
             Log-Message "Error: Directory creation failed - $_"
         }
@@ -56,7 +77,7 @@ if ($config.options.enableRegularVersion) {
     # Copy items from source folder to destination folder
     try {
         Copy-Item -Path $sourceFolderRegular\* -Destination $destinationFolder -Recurse -Force -ErrorAction Stop
-        Log-Message "Success: Regular Template successfully copied to $destinationFolder"
+        Log-Message "Info: Regular Template successfully copied to $destinationFolder"
     } catch {
         Log-Message "Error: Failed to copy Regular Template - $_"
     }
@@ -66,7 +87,7 @@ if ($config.options.enableRegularVersion) {
     $filePath1 = Join-Path -Path $filesFolder -ChildPath $fileName1
     try {
         Invoke-RestMethod -Uri $url1 -OutFile $filePath1 -ErrorAction Stop
-        Log-Message "Download complete: 64-bit version of Chrome successfully downloaded to $filePath1"
+        Log-Message "Info: Download complete, 64-bit version of Chrome successfully downloaded to $filePath1"
     } catch {
         Log-Message "Error: 64-bit Chrome download failed - $_"
     }
@@ -76,7 +97,7 @@ if ($config.options.enableRegularVersion) {
     $filePath2 = Join-Path -Path $filesFolder -ChildPath $fileName2
     try {
         Invoke-RestMethod -Uri $url2 -OutFile $filePath2 -ErrorAction Stop
-        Log-Message "Download complete: 32-bit version of Chrome successfully downloaded to $filePath2"
+        Log-Message "Info: Download complete, 32-bit version of Chrome successfully downloaded to $filePath2"
     } catch {
         Log-Message "Error: 32-bit Chrome download failed - $_"
     }
@@ -87,7 +108,7 @@ if ($config.options.enableForcedVersion) {
     if (-not (Test-Path $forceUpdateFolder)) {
         try {
             New-Item -Path $forceUpdateFolder -ItemType Directory -ErrorAction Stop
-            Log-Message "Directory creation: 'Chrome - VERSION_force_update' successfully created in $PSScriptRoot"
+            Log-Message "Info: Directory creation, 'Chrome - VERSION_force_update' successfully created in $PSScriptRoot"
         } catch {
             Log-Message "Error: Force update directory creation failed - $_"
         }
@@ -96,7 +117,7 @@ if ($config.options.enableForcedVersion) {
     # Copy items from forced source folder to force update folder
     try {
         Copy-Item -Path "$sourceFolderForced\*" -Destination $forceUpdateFolder -Recurse -Force -ErrorAction Stop
-        Log-Message "Success: Forced Template successfully copied to $forceUpdateFolder"
+        Log-Message "Info: Forced Template successfully copied to $forceUpdateFolder"
     } catch {
         Log-Message "Error: Failed to copy Forced Template - $_"
     }
@@ -107,7 +128,7 @@ if ($config.options.enableForcedVersion) {
         $filePath1 = Join-Path -Path $forceUpdateFolder -ChildPath $fileName1
         try {
             Invoke-RestMethod -Uri $url1 -OutFile $filePath1 -ErrorAction Stop
-            Log-Message "Download complete: 64-bit version of Chrome successfully downloaded to force update folder at $filePath1"
+            Log-Message "Info: Download complete, 64-bit version of Chrome successfully downloaded to force update folder at $filePath1"
         } catch {
             Log-Message "Error: 64-bit Chrome download to force update folder failed - $_"
         }
@@ -118,12 +139,12 @@ if ($config.options.enableForcedVersion) {
         if (Test-Path $filePath1) {
             try {
                 Copy-Item -Path $filePath1 -Destination $forceUpdateFolder -Force -ErrorAction Stop
-                Log-Message "Success: 64-bit version of Chrome copied to force update folder at $forceUpdateFolder"
+                Log-Message "Info: 64-bit version of Chrome copied to force update folder at $forceUpdateFolder"
             } catch {
                 Log-Message "Error: Failed to copy 64-bit installer to force update folder - $_"
             }
         } else {
-            Log-Message "Warning: 64-bit version of Chrome was not downloaded and could not be copied to force update folder."
+            Log-Message "Warn: 64-bit version of Chrome was not downloaded and could not be copied to force update folder."
         }
     }
 }

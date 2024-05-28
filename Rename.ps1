@@ -26,12 +26,12 @@ if ($config.options.enableRegularVersion -and -not $config.options.enableForcedV
         $newFolderName = "Chrome - $chromeVersion"
         try {
             Rename-Item -Path $destinationFolder -NewName $newFolderName -ErrorAction Stop
-            Log-Message "Success: Folder renamed to $newFolderName"
+            Log-Message "Info: Folder renamed to $newFolderName"
         } catch {
             Log-Message "Error: Failed to rename folder - $_"
         }
     } else {
-        Log-Message "Warning: Chrome version could not be determined. Folder was not renamed."
+        Log-Message "Warn: Chrome version could not be determined. Folder was not renamed."
     }
 }
 elseif ($config.options.enableForcedVersion -and -not $config.options.enableRegularVersion) {
@@ -47,12 +47,12 @@ elseif ($config.options.enableForcedVersion -and -not $config.options.enableRegu
         $newFolderName = "Chrome - $chromeVersion" + "_force_update"
         try {
             Rename-Item -Path $forceUpdateFolder -NewName $newFolderName -ErrorAction Stop
-            Log-Message "Success: Folder renamed to $newFolderName"
+            Log-Message "Info: Folder renamed to $newFolderName"
         } catch {
             Log-Message "Error: Failed to rename folder - $_"
         }
     } else {
-        Log-Message "Warning: Chrome version could not be determined. Folder was not renamed."
+        Log-Message "Warn: Chrome version could not be determined. Folder was not renamed."
     }
 }
 elseif ($config.options.enableForcedVersion -and $config.options.enableRegularVersion) {
@@ -71,7 +71,7 @@ elseif ($config.options.enableForcedVersion -and $config.options.enableRegularVe
         $newRegularFolderName = "Chrome - $chromeVersion"
         try {
             Rename-Item -Path $destinationFolder -NewName $newRegularFolderName -ErrorAction Stop
-            Log-Message "Success: Folder renamed to $newRegularFolderName"
+            Log-Message "Info: Folder renamed to $newRegularFolderName"
         } catch {
             Log-Message "Error: Failed to rename folder - $_"
         }
@@ -80,11 +80,11 @@ elseif ($config.options.enableForcedVersion -and $config.options.enableRegularVe
         $newForcedFolderName = "Chrome - $chromeVersion" + "_force_update"
         try {
             Rename-Item -Path $forceUpdateFolder -NewName $newForcedFolderName -ErrorAction Stop
-            Log-Message "Success: Folder renamed to $newForcedFolderName"
+            Log-Message "Info: Folder renamed to $newForcedFolderName"
         } catch {
             Log-Message "Error: Failed to rename folder - $_"
         }
     } else {
-        Log-Message "Warning: Chrome version could not be determined. Folders were not renamed."
+        Log-Message "Warn: Chrome version could not be determined. Folders were not renamed."
     }
 }

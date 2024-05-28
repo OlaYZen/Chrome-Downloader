@@ -15,7 +15,8 @@ The `config.json` file should be structured as follows:
   "options": {
     "enableRegularVersion": true,
     "enableForcedVersion": false,
-    "enableNumberedVersion": false
+    "enableNumberedVersion": false,
+    "checkExist": false,
   },
   "logDateFormat": "dd/MM/yyyy HH:mm:ss"
 }
@@ -24,6 +25,7 @@ The `config.json` file should be structured as follows:
 - `enableRegularVersion`: A boolean flag to enable downloading and installing the regular version of Chrome.
 - `enableForcedVersion`: A boolean flag to enable downloading and installing the forced update version of Chrome.
 - `enableNumberedVersion`: A boolean flag to enable the automatic renaming of the folder to the newest version of Chrome. ⚠️ **This option requires administrative privileges when executing the script!** ⚠️
+- `checkExist`: A boolean flag to delete old Chrome folders when the script is executed. ⚠️ **This action will delete your Chrome folders, so ensure you have backups if you wish to retain them.** ⚠️
 - `logDateFormat`: A string defining the format of timestamps in logs. The default format is `dd/MM/yyyy HH:mm:ss`.
 
 ### Date Configuration
