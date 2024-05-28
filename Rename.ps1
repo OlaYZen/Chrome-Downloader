@@ -99,3 +99,4 @@ elseif ($config.options.enableForcedVersion -and $config.options.enableRegularVe
         Log-Message "Warn: Chrome version could not be determined. Folders were not renamed."
     }
 }
+Write-Output "For additional logs, please refer to $PSScriptRoot\$logFileName."

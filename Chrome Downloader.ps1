@@ -163,3 +163,6 @@ if ($config.options.folderNumberedVersion) {
 		& $PSScriptRoot\Rename.ps1
 	}
 }
+else {
+    Write-Output "For additional logs, please refer to $PSScriptRoot\$logFileName."
+}
