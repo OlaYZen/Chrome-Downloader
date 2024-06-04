@@ -1,3 +1,10 @@
+# ⚠️MOVED ⚠️
+THIS SCRIPT HAS BEEN MIGRATED TO FORGEJO
+```
+https://forgejo.olayzen.com/OlaYZen/MSI-Downloader
+```
+but you can still use the GitHub Version, it is just outdated.
+
 # Google Chrome Downloader MSI Script
 
 This PowerShell script automates the process of downloading and organizing Google Chrome installers based on specified configurations. It supports downloading both 64-bit and 32-bit versions of Chrome and organizing them into appropriate folders.
